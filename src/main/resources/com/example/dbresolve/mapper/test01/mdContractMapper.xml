@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dbresolve.mapper.test01.mdContractMapper">
+  <resultMap id="BaseResultMap" type="com.example.dbresolve.model.mdContract">
+    <id column="contract_id" jdbcType="INTEGER" property="contractId" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="company_code_no" jdbcType="VARCHAR" property="companyCodeNo" />
+    <result column="delete_flag" jdbcType="TINYINT" property="deleteFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_user" jdbcType="INTEGER" property="createUser" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_user" jdbcType="INTEGER" property="updateUser" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="screate_time" jdbcType="TIMESTAMP" property="screateTime" />
+    <result column="supdate_time" jdbcType="TIMESTAMP" property="supdateTime" />
+    <result column="payment_state" jdbcType="VARCHAR" property="paymentState" />
+    <result column="special_contract_no" jdbcType="VARCHAR" property="specialContractNo" />
+    <result column="profit_center" jdbcType="VARCHAR" property="profitCenter" />
+    <result column="subject_flag" jdbcType="VARCHAR" property="subjectFlag" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contract_id, contract_no, company_code_no, delete_flag, create_time, create_user, 
+    update_time, update_user, del_flag, city_id, screate_time, supdate_time, payment_state, 
+    special_contract_no, profit_center, subject_flag
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from md_contract
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from md_contract
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.dbresolve.model.mdContract">
+    insert into md_contract (contract_id, contract_no, company_code_no, 
+      delete_flag, create_time, create_user, 
+      update_time, update_user, del_flag, 
+      city_id, screate_time, supdate_time, 
+      payment_state, special_contract_no, profit_center, 
+      subject_flag)
+    values (#{contractId,jdbcType=INTEGER}, #{contractNo,jdbcType=VARCHAR}, #{companyCodeNo,jdbcType=VARCHAR}, 
+      #{deleteFlag,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{createUser,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{updateUser,jdbcType=INTEGER}, #{delFlag,jdbcType=TINYINT}, 
+      #{cityId,jdbcType=INTEGER}, #{screateTime,jdbcType=TIMESTAMP}, #{supdateTime,jdbcType=TIMESTAMP}, 
+      #{paymentState,jdbcType=VARCHAR}, #{specialContractNo,jdbcType=VARCHAR}, #{profitCenter,jdbcType=VARCHAR}, 
+      #{subjectFlag,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.dbresolve.model.mdContract">
+    insert into md_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        contract_id,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="companyCodeNo != null">
+        company_code_no,
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="createUser != null">
+        create_user,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="updateUser != null">
+        update_user,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="screateTime != null">
+        screate_time,
+      </if>
+      <if test="supdateTime != null">
+        supdate_time,
+      </if>
+      <if test="paymentState != null">
+        payment_state,
+      </if>
+      <if test="specialContractNo != null">
+        special_contract_no,
+      </if>
+      <if test="profitCenter != null">
+        profit_center,
+      </if>
+      <if test="subjectFlag != null">
+        subject_flag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractId != null">
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCodeNo != null">
+        #{companyCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentState != null">
+        #{paymentState,jdbcType=VARCHAR},
+      </if>
+      <if test="specialContractNo != null">
+        #{specialContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="profitCenter != null">
+        #{profitCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectFlag != null">
+        #{subjectFlag,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dbresolve.model.mdContract">
+    update md_contract
+    <set>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="companyCodeNo != null">
+        company_code_no = #{companyCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteFlag != null">
+        delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createUser != null">
+        create_user = #{createUser,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUser != null">
+        update_user = #{updateUser,jdbcType=INTEGER},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        supdate_time = #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="paymentState != null">
+        payment_state = #{paymentState,jdbcType=VARCHAR},
+      </if>
+      <if test="specialContractNo != null">
+        special_contract_no = #{specialContractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="profitCenter != null">
+        profit_center = #{profitCenter,jdbcType=VARCHAR},
+      </if>
+      <if test="subjectFlag != null">
+        subject_flag = #{subjectFlag,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.dbresolve.model.mdContract">
+    update md_contract
+    set contract_no = #{contractNo,jdbcType=VARCHAR},
+      company_code_no = #{companyCodeNo,jdbcType=VARCHAR},
+      delete_flag = #{deleteFlag,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_user = #{createUser,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      update_user = #{updateUser,jdbcType=INTEGER},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      city_id = #{cityId,jdbcType=INTEGER},
+      screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      supdate_time = #{supdateTime,jdbcType=TIMESTAMP},
+      payment_state = #{paymentState,jdbcType=VARCHAR},
+      special_contract_no = #{specialContractNo,jdbcType=VARCHAR},
+      profit_center = #{profitCenter,jdbcType=VARCHAR},
+      subject_flag = #{subjectFlag,jdbcType=VARCHAR}
+    where contract_id = #{contractId,jdbcType=INTEGER}
+  </update>
+  <select id="getSynData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from md_contract
+    where contract_id<![CDATA[ <= ]]>#{maxSid} and contract_id> #{currentSid} order by contract_id limit #{pageSize}
+  </select>
+
+
+  <select id="getMaxSid" resultType="long">
+    select
+    max(contract_id)
+    from md_contract
+  </select>
+  <select id="getTotalNumber" resultType="long">
+    select
+    count(1)
+    from md_contract
+    where contract_id<![CDATA[ <= ]]>#{maxSid}
+  </select>
+</mapper>

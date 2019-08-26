@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dbresolve.mapper.test01.mdContractAccountMapper">
+  <resultMap id="BaseResultMap" type="com.example.dbresolve.model.mdContractAccount">
+    <id column="contract_account_id" jdbcType="INTEGER" property="contractAccountId" />
+    <result column="contract_id" jdbcType="INTEGER" property="contractId" />
+    <result column="customer_id" jdbcType="INTEGER" property="customerId" />
+    <result column="house_property_id" jdbcType="INTEGER" property="housePropertyId" />
+    <result column="meter_id" jdbcType="INTEGER" property="meterId" />
+    <result column="calc_time_rule_id" jdbcType="INTEGER" property="calcTimeRuleId" />
+    <result column="calc_population_rule_id" jdbcType="INTEGER" property="calcPopulationRuleId" />
+    <result column="company_code_no" jdbcType="VARCHAR" property="companyCodeNo" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="meter_trade" jdbcType="VARCHAR" property="meterTrade" />
+    <result column="calc_exec_type" jdbcType="TINYINT" property="calcExecType" />
+    <result column="account_status" jdbcType="TINYINT" property="accountStatus" />
+    <result column="account_balance" jdbcType="DECIMAL" property="accountBalance" />
+    <result column="rate_type_code_no" jdbcType="VARCHAR" property="rateTypeCodeNo" />
+    <result column="rate_type_begin_time" jdbcType="TIMESTAMP" property="rateTypeBeginTime" />
+    <result column="rate_type_end_time" jdbcType="TIMESTAMP" property="rateTypeEndTime" />
+    <result column="del_flag" jdbcType="TINYINT" property="delFlag" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="screate_time" jdbcType="TIMESTAMP" property="screateTime" />
+    <result column="supdate_time" jdbcType="TIMESTAMP" property="supdateTime" />
+    <result column="gas_supply_agreement_num" jdbcType="VARCHAR" property="gasSupplyAgreementNum" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contract_account_id, contract_id, customer_id, house_property_id, meter_id, calc_time_rule_id, 
+    calc_population_rule_id, company_code_no, contract_no, meter_trade, calc_exec_type, 
+    account_status, account_balance, rate_type_code_no, rate_type_begin_time, rate_type_end_time, 
+    del_flag, create_time, update_time, city_id, screate_time, supdate_time, gas_supply_agreement_num, 
+    remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from md_contract_account
+    where contract_account_id = #{contractAccountId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from md_contract_account
+    where contract_account_id = #{contractAccountId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.dbresolve.model.mdContractAccount">
+    insert into md_contract_account (contract_account_id, contract_id, customer_id, 
+      house_property_id, meter_id, calc_time_rule_id, 
+      calc_population_rule_id, company_code_no, contract_no, 
+      meter_trade, calc_exec_type, account_status, 
+      account_balance, rate_type_code_no, rate_type_begin_time, 
+      rate_type_end_time, del_flag, create_time, 
+      update_time, city_id, screate_time, 
+      supdate_time, gas_supply_agreement_num, remark
+      )
+    values (#{contractAccountId,jdbcType=INTEGER}, #{contractId,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, 
+      #{housePropertyId,jdbcType=INTEGER}, #{meterId,jdbcType=INTEGER}, #{calcTimeRuleId,jdbcType=INTEGER}, 
+      #{calcPopulationRuleId,jdbcType=INTEGER}, #{companyCodeNo,jdbcType=VARCHAR}, #{contractNo,jdbcType=VARCHAR}, 
+      #{meterTrade,jdbcType=VARCHAR}, #{calcExecType,jdbcType=TINYINT}, #{accountStatus,jdbcType=TINYINT}, 
+      #{accountBalance,jdbcType=DECIMAL}, #{rateTypeCodeNo,jdbcType=VARCHAR}, #{rateTypeBeginTime,jdbcType=TIMESTAMP}, 
+      #{rateTypeEndTime,jdbcType=TIMESTAMP}, #{delFlag,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{cityId,jdbcType=INTEGER}, #{screateTime,jdbcType=TIMESTAMP}, 
+      #{supdateTime,jdbcType=TIMESTAMP}, #{gasSupplyAgreementNum,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.dbresolve.model.mdContractAccount">
+    insert into md_contract_account
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contractAccountId != null">
+        contract_account_id,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+      <if test="customerId != null">
+        customer_id,
+      </if>
+      <if test="housePropertyId != null">
+        house_property_id,
+      </if>
+      <if test="meterId != null">
+        meter_id,
+      </if>
+      <if test="calcTimeRuleId != null">
+        calc_time_rule_id,
+      </if>
+      <if test="calcPopulationRuleId != null">
+        calc_population_rule_id,
+      </if>
+      <if test="companyCodeNo != null">
+        company_code_no,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="meterTrade != null">
+        meter_trade,
+      </if>
+      <if test="calcExecType != null">
+        calc_exec_type,
+      </if>
+      <if test="accountStatus != null">
+        account_status,
+      </if>
+      <if test="accountBalance != null">
+        account_balance,
+      </if>
+      <if test="rateTypeCodeNo != null">
+        rate_type_code_no,
+      </if>
+      <if test="rateTypeBeginTime != null">
+        rate_type_begin_time,
+      </if>
+      <if test="rateTypeEndTime != null">
+        rate_type_end_time,
+      </if>
+      <if test="delFlag != null">
+        del_flag,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="screateTime != null">
+        screate_time,
+      </if>
+      <if test="supdateTime != null">
+        supdate_time,
+      </if>
+      <if test="gasSupplyAgreementNum != null">
+        gas_supply_agreement_num,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contractAccountId != null">
+        #{contractAccountId,jdbcType=INTEGER},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="housePropertyId != null">
+        #{housePropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="meterId != null">
+        #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="calcTimeRuleId != null">
+        #{calcTimeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="calcPopulationRuleId != null">
+        #{calcPopulationRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCodeNo != null">
+        #{companyCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTrade != null">
+        #{meterTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="calcExecType != null">
+        #{calcExecType,jdbcType=TINYINT},
+      </if>
+      <if test="accountStatus != null">
+        #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountBalance != null">
+        #{accountBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="rateTypeCodeNo != null">
+        #{rateTypeCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rateTypeBeginTime != null">
+        #{rateTypeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rateTypeEndTime != null">
+        #{rateTypeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gasSupplyAgreementNum != null">
+        #{gasSupplyAgreementNum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dbresolve.model.mdContractAccount">
+    update md_contract_account
+    <set>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=INTEGER},
+      </if>
+      <if test="customerId != null">
+        customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="housePropertyId != null">
+        house_property_id = #{housePropertyId,jdbcType=INTEGER},
+      </if>
+      <if test="meterId != null">
+        meter_id = #{meterId,jdbcType=INTEGER},
+      </if>
+      <if test="calcTimeRuleId != null">
+        calc_time_rule_id = #{calcTimeRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="calcPopulationRuleId != null">
+        calc_population_rule_id = #{calcPopulationRuleId,jdbcType=INTEGER},
+      </if>
+      <if test="companyCodeNo != null">
+        company_code_no = #{companyCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="meterTrade != null">
+        meter_trade = #{meterTrade,jdbcType=VARCHAR},
+      </if>
+      <if test="calcExecType != null">
+        calc_exec_type = #{calcExecType,jdbcType=TINYINT},
+      </if>
+      <if test="accountStatus != null">
+        account_status = #{accountStatus,jdbcType=TINYINT},
+      </if>
+      <if test="accountBalance != null">
+        account_balance = #{accountBalance,jdbcType=DECIMAL},
+      </if>
+      <if test="rateTypeCodeNo != null">
+        rate_type_code_no = #{rateTypeCodeNo,jdbcType=VARCHAR},
+      </if>
+      <if test="rateTypeBeginTime != null">
+        rate_type_begin_time = #{rateTypeBeginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="rateTypeEndTime != null">
+        rate_type_end_time = #{rateTypeEndTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="delFlag != null">
+        del_flag = #{delFlag,jdbcType=TINYINT},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        supdate_time = #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="gasSupplyAgreementNum != null">
+        gas_supply_agreement_num = #{gasSupplyAgreementNum,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contract_account_id = #{contractAccountId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.dbresolve.model.mdContractAccount">
+    update md_contract_account
+    set contract_id = #{contractId,jdbcType=INTEGER},
+      customer_id = #{customerId,jdbcType=INTEGER},
+      house_property_id = #{housePropertyId,jdbcType=INTEGER},
+      meter_id = #{meterId,jdbcType=INTEGER},
+      calc_time_rule_id = #{calcTimeRuleId,jdbcType=INTEGER},
+      calc_population_rule_id = #{calcPopulationRuleId,jdbcType=INTEGER},
+      company_code_no = #{companyCodeNo,jdbcType=VARCHAR},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      meter_trade = #{meterTrade,jdbcType=VARCHAR},
+      calc_exec_type = #{calcExecType,jdbcType=TINYINT},
+      account_status = #{accountStatus,jdbcType=TINYINT},
+      account_balance = #{accountBalance,jdbcType=DECIMAL},
+      rate_type_code_no = #{rateTypeCodeNo,jdbcType=VARCHAR},
+      rate_type_begin_time = #{rateTypeBeginTime,jdbcType=TIMESTAMP},
+      rate_type_end_time = #{rateTypeEndTime,jdbcType=TIMESTAMP},
+      del_flag = #{delFlag,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      city_id = #{cityId,jdbcType=INTEGER},
+      screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      supdate_time = #{supdateTime,jdbcType=TIMESTAMP},
+      gas_supply_agreement_num = #{gasSupplyAgreementNum,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR}
+    where contract_account_id = #{contractAccountId,jdbcType=INTEGER}
+  </update>
+  <select id="getSynData" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from md_contract_account
+    where contract_account_id<![CDATA[ <= ]]>#{maxSid} and contract_account_id> #{currentSid} order by contract_account_id limit #{pageSize}
+  </select>
+
+
+  <select id="getMaxSid" resultType="long">
+    select
+    max(contract_account_id)
+    from md_contract_account
+  </select>
+  <select id="getTotalNumber" resultType="long">
+    select
+    count(1)
+    from md_contract_account
+    where contract_account_id<![CDATA[ <= ]]>#{maxSid}
+  </select>
+</mapper>

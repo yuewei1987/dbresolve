@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.dbresolve.mapper.test02.mdContractNewMapper">
+  <resultMap id="BaseResultMap" type="com.example.dbresolve.model.mdContractNew">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="contract_id" jdbcType="VARCHAR" property="contractId" />
+    <result column="contract_no" jdbcType="VARCHAR" property="contractNo" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+    <result column="screate_time" jdbcType="TIMESTAMP" property="screateTime" />
+    <result column="supdate_time" jdbcType="TIMESTAMP" property="supdateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, contract_id, contract_no, city_id, screate_time, supdate_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from md_contract
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from md_contract
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.dbresolve.model.mdContractNew">
+    insert into md_contract (id, contract_id, contract_no, 
+      city_id, screate_time, supdate_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{contractId,jdbcType=VARCHAR}, #{contractNo,jdbcType=VARCHAR}, 
+      #{cityId,jdbcType=INTEGER}, #{screateTime,jdbcType=TIMESTAMP}, #{supdateTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.dbresolve.model.mdContractNew">
+    insert into md_contract
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="contractId != null">
+        contract_id,
+      </if>
+      <if test="contractNo != null">
+        contract_no,
+      </if>
+      <if test="cityId != null">
+        city_id,
+      </if>
+      <if test="screateTime != null">
+        screate_time,
+      </if>
+      <if test="supdateTime != null">
+        supdate_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="contractId != null">
+        #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.dbresolve.model.mdContractNew">
+    update md_contract
+    <set>
+      <if test="contractId != null">
+        contract_id = #{contractId,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNo != null">
+        contract_no = #{contractNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cityId != null">
+        city_id = #{cityId,jdbcType=INTEGER},
+      </if>
+      <if test="screateTime != null">
+        screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="supdateTime != null">
+        supdate_time = #{supdateTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.dbresolve.model.mdContractNew">
+    update md_contract
+    set contract_id = #{contractId,jdbcType=VARCHAR},
+      contract_no = #{contractNo,jdbcType=VARCHAR},
+      city_id = #{cityId,jdbcType=INTEGER},
+      screate_time = #{screateTime,jdbcType=TIMESTAMP},
+      supdate_time = #{supdateTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+
+  <insert id="batchAdd" parameterType="java.util.List">
+    insert into md_contract (contract_id,contract_no,city_id)
+    values
+    <foreach collection="list" item="item" index="index" separator=",">
+      (#{item.contractId,jdbcType=VARCHAR}, #{item.contractNo,jdbcType=VARCHAR}, #{item.cityId,jdbcType=INTEGER})
+    </foreach>
+  </insert>
+</mapper>
